@@ -1,0 +1,1505 @@
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAlbums (20201124070304)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "albums" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cover" varchar, "title" varchar, "artist" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201124070304"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTracks (20201124070312)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "minutes" varchar, "album_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_tracks_on_album_id" ON "tracks" ("album_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201124070312"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-24 07:06:13.130775"], ["updated_at", "2020-11-24 07:06:13.130775"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Create (0.4ms)[0m  [1m[32mINSERT INTO "albums" ("cover", "title", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cover", "http://content.codecademy.com/projects/3/bass-music/my-beautiful-dark-twisted-fantasy.jpg"], ["title", "My Beautiful Dark Twisted Fantasy"], ["artist", "Kanye West"], ["created_at", "2020-11-24 07:06:57.945353"], ["updated_at", "2020-11-24 07:06:57.945353"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Dark Fantasy"], ["minutes", "5"], ["album_id", 1], ["created_at", "2020-11-24 07:06:57.977071"], ["updated_at", "2020-11-24 07:06:57.977071"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Gorgeous"], ["minutes", "6"], ["album_id", 1], ["created_at", "2020-11-24 07:06:57.981836"], ["updated_at", "2020-11-24 07:06:57.981836"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Power"], ["minutes", "5"], ["album_id", 1], ["created_at", "2020-11-24 07:06:57.985928"], ["updated_at", "2020-11-24 07:06:57.985928"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "All of the Lights"], ["minutes", "5"], ["album_id", 1], ["created_at", "2020-11-24 07:06:57.990156"], ["updated_at", "2020-11-24 07:06:57.990156"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Monster"], ["minutes", "7"], ["album_id", 1], ["created_at", "2020-11-24 07:06:57.994180"], ["updated_at", "2020-11-24 07:06:57.994180"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "So Appalled"], ["minutes", "7"], ["album_id", 1], ["created_at", "2020-11-24 07:06:57.998459"], ["updated_at", "2020-11-24 07:06:57.998459"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Devil in a New Dress"], ["minutes", "6"], ["album_id", 1], ["created_at", "2020-11-24 07:06:58.002897"], ["updated_at", "2020-11-24 07:06:58.002897"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Runaway"], ["minutes", "10"], ["album_id", 1], ["created_at", "2020-11-24 07:06:58.007221"], ["updated_at", "2020-11-24 07:06:58.007221"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hell of a Life"], ["minutes", "6"], ["album_id", 1], ["created_at", "2020-11-24 07:06:58.011325"], ["updated_at", "2020-11-24 07:06:58.011325"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Blame Game"], ["minutes", "8"], ["album_id", 1], ["created_at", "2020-11-24 07:06:58.015536"], ["updated_at", "2020-11-24 07:06:58.015536"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Lost in the World"], ["minutes", "5"], ["album_id", 1], ["created_at", "2020-11-24 07:06:58.021513"], ["updated_at", "2020-11-24 07:06:58.021513"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Who will Survive in America"], ["minutes", "2"], ["album_id", 1], ["created_at", "2020-11-24 07:06:58.026860"], ["updated_at", "2020-11-24 07:06:58.026860"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Create (0.3ms)[0m  [1m[32mINSERT INTO "albums" ("cover", "title", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cover", "http://content.codecademy.com/projects/3/bass-music/beyonce.png"], ["title", "Beyonce"], ["artist", "Beyonce"], ["created_at", "2020-11-24 07:06:58.030249"], ["updated_at", "2020-11-24 07:06:58.030249"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Pretty Hurts"], ["minutes", "5"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.035302"], ["updated_at", "2020-11-24 07:06:58.035302"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Haunted"], ["minutes", "7"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.039634"], ["updated_at", "2020-11-24 07:06:58.039634"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Drunk in Love"], ["minutes", "6"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.043881"], ["updated_at", "2020-11-24 07:06:58.043881"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Blow"], ["minutes", "6"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.048021"], ["updated_at", "2020-11-24 07:06:58.048021"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "No Angel"], ["minutes", "4"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.052048"], ["updated_at", "2020-11-24 07:06:58.052048"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Partition"], ["minutes", "6"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.074365"], ["updated_at", "2020-11-24 07:06:58.074365"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Jealous"], ["minutes", "4"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.079404"], ["updated_at", "2020-11-24 07:06:58.079404"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rocket"], ["minutes", "7"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.084505"], ["updated_at", "2020-11-24 07:06:58.084505"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mine"], ["minutes", "7"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.089403"], ["updated_at", "2020-11-24 07:06:58.089403"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "XO"], ["minutes", "4"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.093888"], ["updated_at", "2020-11-24 07:06:58.093888"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Flawless"], ["minutes", "5"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.098432"], ["updated_at", "2020-11-24 07:06:58.098432"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Superpower"], ["minutes", "5"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.103137"], ["updated_at", "2020-11-24 07:06:58.103137"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Heaven"], ["minutes", "4"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.107816"], ["updated_at", "2020-11-24 07:06:58.107816"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Blue"], ["minutes", "5"], ["album_id", 2], ["created_at", "2020-11-24 07:06:58.112064"], ["updated_at", "2020-11-24 07:06:58.112064"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Create (0.3ms)[0m  [1m[32mINSERT INTO "albums" ("cover", "title", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cover", "http://content.codecademy.com/projects/3/bass-music/21.png"], ["title", "21"], ["artist", "Adele"], ["created_at", "2020-11-24 07:06:58.114356"], ["updated_at", "2020-11-24 07:06:58.114356"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rolling in the Deep"], ["minutes", "4"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.120554"], ["updated_at", "2020-11-24 07:06:58.120554"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rumour Has It"], ["minutes", "4"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.127416"], ["updated_at", "2020-11-24 07:06:58.127416"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Turning Tables"], ["minutes", "5"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.132880"], ["updated_at", "2020-11-24 07:06:58.132880"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Don't You Remember"], ["minutes", "5"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.137379"], ["updated_at", "2020-11-24 07:06:58.137379"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Set Fire to the Rain"], ["minutes", "5"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.141903"], ["updated_at", "2020-11-24 07:06:58.141903"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "He Won't Go"], ["minutes", "5"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.146181"], ["updated_at", "2020-11-24 07:06:58.146181"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Take it All"], ["minutes", "4"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.150776"], ["updated_at", "2020-11-24 07:06:58.150776"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "I'll be Waiting"], ["minutes", "5"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.155291"], ["updated_at", "2020-11-24 07:06:58.155291"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "One and Only"], ["minutes", "6"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.160092"], ["updated_at", "2020-11-24 07:06:58.160092"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Lovesong"], ["minutes", "6"], ["album_id", 3], ["created_at", "2020-11-24 07:06:58.164447"], ["updated_at", "2020-11-24 07:06:58.164447"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Create (0.6ms)[0m  [1m[32mINSERT INTO "albums" ("cover", "title", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cover", "http://content.codecademy.com/projects/3/bass-music/channel-orange.jpg"], ["title", "Channel Orange"], ["artist", "Frank Ocean"], ["created_at", "2020-11-24 07:06:58.167095"], ["updated_at", "2020-11-24 07:06:58.167095"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Start"], ["minutes", "1"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.174171"], ["updated_at", "2020-11-24 07:06:58.174171"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Thinkin Bout You"], ["minutes", "4"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.189793"], ["updated_at", "2020-11-24 07:06:58.189793"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Fertilizer"], ["minutes", "1"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.194796"], ["updated_at", "2020-11-24 07:06:58.194796"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Sierra Leone"], ["minutes", "3"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.200571"], ["updated_at", "2020-11-24 07:06:58.200571"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Sweet Life"], ["minutes", "5"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.206456"], ["updated_at", "2020-11-24 07:06:58.206456"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Not Just Money"], ["minutes", "1"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.211974"], ["updated_at", "2020-11-24 07:06:58.211974"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Super Rich Kids"], ["minutes", "6"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.217019"], ["updated_at", "2020-11-24 07:06:58.217019"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Pilot Jones"], ["minutes", "4"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.223386"], ["updated_at", "2020-11-24 07:06:58.223386"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Crack Rock"], ["minutes", "4"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.229551"], ["updated_at", "2020-11-24 07:06:58.229551"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Pyramids"], ["minutes", "10"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.234114"], ["updated_at", "2020-11-24 07:06:58.234114"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Lost"], ["minutes", "4"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.238424"], ["updated_at", "2020-11-24 07:06:58.238424"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "White"], ["minutes", "2"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.242510"], ["updated_at", "2020-11-24 07:06:58.242510"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Monks"], ["minutes", "4"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.246876"], ["updated_at", "2020-11-24 07:06:58.246876"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Bad Religion"], ["minutes", "3"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.250993"], ["updated_at", "2020-11-24 07:06:58.250993"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Pink Matter"], ["minutes", "5"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.255435"], ["updated_at", "2020-11-24 07:06:58.255435"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Forrest Gump"], ["minutes", "4"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.259779"], ["updated_at", "2020-11-24 07:06:58.259779"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "End/Golden Girl"], ["minutes", "9"], ["album_id", 4], ["created_at", "2020-11-24 07:06:58.263955"], ["updated_at", "2020-11-24 07:06:58.263955"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Create (0.3ms)[0m  [1m[32mINSERT INTO "albums" ("cover", "title", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cover", "http://content.codecademy.com/projects/3/bass-music/good-kid-maad-city.jpg"], ["title", "Good Kid, M.A.A.D City"], ["artist", "Kendrick Lamar"], ["created_at", "2020-11-24 07:06:58.266504"], ["updated_at", "2020-11-24 07:06:58.266504"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Sherane a.k.a. Master Splinterâ€™s Daughter"], ["minutes", "5"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.272246"], ["updated_at", "2020-11-24 07:06:58.272246"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Bitch, Don't Kill My Vibe"], ["minutes", "6"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.277155"], ["updated_at", "2020-11-24 07:06:58.277155"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (1.8ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Backseat Freestyle"], ["minutes", "4"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.281416"], ["updated_at", "2020-11-24 07:06:58.281416"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "The Art of Peer Pressure"], ["minutes", "6"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.290330"], ["updated_at", "2020-11-24 07:06:58.290330"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Money Trees"], ["minutes", "7"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.295058"], ["updated_at", "2020-11-24 07:06:58.295058"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Poetic Justice"], ["minutes", "5"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.308402"], ["updated_at", "2020-11-24 07:06:58.308402"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "good kid"], ["minutes", "4"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.312778"], ["updated_at", "2020-11-24 07:06:58.312778"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "m.A.A.d city"], ["minutes", "6"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.316990"], ["updated_at", "2020-11-24 07:06:58.316990"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Swimming Pools (Drank)"], ["minutes", "6"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.321602"], ["updated_at", "2020-11-24 07:06:58.321602"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Sing About Me, Iâ€™m Dying of Thirst"], ["minutes", "13"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.326893"], ["updated_at", "2020-11-24 07:06:58.326893"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Real"], ["minutes", "8"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.332389"], ["updated_at", "2020-11-24 07:06:58.332389"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Compton"], ["minutes", "5"], ["album_id", 5], ["created_at", "2020-11-24 07:06:58.336738"], ["updated_at", "2020-11-24 07:06:58.336738"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Create (0.3ms)[0m  [1m[32mINSERT INTO "albums" ("cover", "title", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cover", "http://content.codecademy.com/projects/3/bass-music/ram.jpg"], ["title", "Random Access Memories"], ["artist", "Daft Punk"], ["created_at", "2020-11-24 07:06:58.339348"], ["updated_at", "2020-11-24 07:06:58.339348"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Give Life Back to Music"], ["minutes", "5"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.344282"], ["updated_at", "2020-11-24 07:06:58.344282"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "The Game of Love"], ["minutes", "6"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.348567"], ["updated_at", "2020-11-24 07:06:58.348567"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Giorgio by Moroder"], ["minutes", "10"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.352658"], ["updated_at", "2020-11-24 07:06:58.352658"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Within"], ["minutes", "4"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.357363"], ["updated_at", "2020-11-24 07:06:58.357363"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Instant Crush"], ["minutes", "6"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.361938"], ["updated_at", "2020-11-24 07:06:58.361938"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Lose Yourself to Dance"], ["minutes", "6"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.366414"], ["updated_at", "2020-11-24 07:06:58.366414"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Touch"], ["minutes", "9"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.372223"], ["updated_at", "2020-11-24 07:06:58.372223"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Get Lucky"], ["minutes", "7"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.377365"], ["updated_at", "2020-11-24 07:06:58.377365"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Beyond"], ["minutes", "5"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.381966"], ["updated_at", "2020-11-24 07:06:58.381966"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Motherboard"], ["minutes", "6"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.386272"], ["updated_at", "2020-11-24 07:06:58.386272"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Fragments of Time"], ["minutes", "5"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.390509"], ["updated_at", "2020-11-24 07:06:58.390509"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Doin' It Right"], ["minutes", "5"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.394532"], ["updated_at", "2020-11-24 07:06:58.394532"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Contact"], ["minutes", "7"], ["album_id", 6], ["created_at", "2020-11-24 07:06:58.398615"], ["updated_at", "2020-11-24 07:06:58.398615"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Create (0.3ms)[0m  [1m[32mINSERT INTO "albums" ("cover", "title", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cover", "http://content.codecademy.com/projects/3/bass-music/the-2020-experience.png"], ["title", "The 20/20 Experience"], ["artist", "Justin Timberlake"], ["created_at", "2020-11-24 07:06:58.401068"], ["updated_at", "2020-11-24 07:06:58.401068"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Pusher Love Girl"], ["minutes", "9"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.414843"], ["updated_at", "2020-11-24 07:06:58.414843"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Suit & Tie"], ["minutes", "6"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.419847"], ["updated_at", "2020-11-24 07:06:58.419847"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Don't Hold the Wall"], ["minutes", "8"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.424659"], ["updated_at", "2020-11-24 07:06:58.424659"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Strawberry Bubblegum"], ["minutes", "8"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.429548"], ["updated_at", "2020-11-24 07:06:58.429548"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Tunnel Vision"], ["minutes", "7"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.433708"], ["updated_at", "2020-11-24 07:06:58.433708"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Spaceship Coupe"], ["minutes", "8"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.437926"], ["updated_at", "2020-11-24 07:06:58.437926"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "That Girl"], ["minutes", "5"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.442128"], ["updated_at", "2020-11-24 07:06:58.442128"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Let the Groove Get In"], ["minutes", "8"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.446091"], ["updated_at", "2020-11-24 07:06:58.446091"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mirrors"], ["minutes", "9"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.450102"], ["updated_at", "2020-11-24 07:06:58.450102"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTrack Create (0.3ms)[0m  [1m[32mINSERT INTO "tracks" ("name", "minutes", "album_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Blue Ocean Floor"], ["minutes", "8"], ["album_id", 7], ["created_at", "2020-11-24 07:06:58.454410"], ["updated_at", "2020-11-24 07:06:58.454410"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /usr/local/bin/rake:23)
+Started GET "/" for ::1 at 2020-11-24 02:10:04 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 5973)
+Completed 500 Internal Server Error in 104ms (ActiveRecord: 0.7ms | Allocations: 35590)
+
+
+  
+ActionView::Template::Error (The asset "application.js" is not present in the asset pipeline.
+):
+     5:     <%= stylesheet_link_tag 'albums.css' %>
+     6:     <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700,500' rel='stylesheet' type='text/css'>
+     7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+     8:     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+     9:     <%= csrf_meta_tags %>
+    10:   </head>
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for ::1 at 2020-11-24 02:11:29 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 6057)
+Completed 200 OK in 42ms (Views: 30.3ms | ActiveRecord: 1.2ms | Allocations: 12832)
+
+
+Started GET "/" for ::1 at 2020-11-24 02:11:36 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1029)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 2870)
+
+
+Started GET "/" for ::1 at 2020-11-24 02:12:52 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 22.2ms | Allocations: 5865)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 0.9ms | Allocations: 21756)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:12:54 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1047)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 4205)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:13:00 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1022)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.1ms | Allocations: 13453)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:13:00 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1022)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms | Allocations: 4164)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:13:01 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 1012)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.1ms | Allocations: 4143)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:13:02 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1022)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 4160)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:13:51 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 5927)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.8ms | Allocations: 13201)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:13:52 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1047)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms | Allocations: 4233)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:13:52 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1022)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 4161)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:16:55 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 15.5ms | Allocations: 5810)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.7ms | Allocations: 13663)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:16:56 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1051)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms | Allocations: 4239)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:16:57 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1022)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 4161)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:17:12 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 5946)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 2.8ms | Allocations: 13220)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:17:13 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1047)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.8ms | Allocations: 4235)
+
+
+  
+ActionView::Template::Error (Multiple files with the same output path cannot be linked ("albums.css")
+In "/Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/config/manifest.js" these files were linked:
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.css
+  - /Users/AugustShah 1/Documents/Coding-Tools/Projects/bass-music-new/app/assets/stylesheets/albums.scss
+):
+  
+sprockets (4.0.2) lib/sprockets/base.rb:100:in `find_all_linked_assets'
+sprockets (4.0.2) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `block in synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:41:in `synchronize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:19:in `execute'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/promise.rb:563:in `block in realize'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+concurrent-ruby (1.1.7) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started GET "/" for ::1 at 2020-11-24 02:18:26 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (1.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 5810)
+Completed 200 OK in 78ms (Views: 63.5ms | ActiveRecord: 2.8ms | Allocations: 18786)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:18:47 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.2ms | Allocations: 5860)
+
+
+  
+NoMethodError (undefined method `tracks' for #<Album:0x00007f9e8ab908b8>
+Did you mean?  track
+               track=):
+  
+app/controllers/albums_controller.rb:11:in `show'
+Started GET "/albums/1" for ::1 at 2020-11-24 02:19:17 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1501)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 1.0ms | Allocations: 13544)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<div class="show row">
+  <div class="cover col-md-4"> <img src="<%= album.cover %>"
+  </div>
+  <div class="col-sm-8">
+    <h3 class="album-title"> <%= album.title %> </h3>
+    <p class="album-artist"> <%= album.artist %> </p>
+      <% end %>
+
+  
+    <% @tracks.each do |track| %>
+    <div class="track row">
+    # => Looping through each of the track information and displaying it
+         <div class="name col-md-8"> <%= track.name %> </div>
+      <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+      </div>
+       <% end %>
+    </div>
+   
+  </div>
+</div>
+
+):
+1:    
+2:    <div class="show row">
+3:      <div class="cover col-md-4"> <img src="<%= album.cover %>"
+4:      </div>
+5:      <div class="col-sm-8">
+6:        <h3 class="album-title"> <%= album.title %> </h3>
+7:        <p class="album-artist"> <%= album.artist %> </p>
+8:          <% end %>
+9:    
+10:      
+11:        <% @tracks.each do |track| %>
+12:        <div class="track row">
+13:        # => Looping through each of the track information and displaying it
+14:             <div class="name col-md-8"> <%= track.name %> </div>
+15:          <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+16:          </div>
+17:           <% end %>
+18:        </div>
+19:       
+20:      </div>
+21:    </div>
+  
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+Started GET "/albums/1" for ::1 at 2020-11-24 02:19:21 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1129)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms | Allocations: 2189)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<div class="show row">
+  <div class="cover col-md-4"> <img src="<%= album.cover %>"
+  </div>
+  <div class="col-sm-8">
+    <h3 class="album-title"> <%= album.title %> </h3>
+    <p class="album-artist"> <%= album.artist %> </p>
+      <% end %>
+
+  
+    <% @tracks.each do |track| %>
+    <div class="track row">
+    # => Looping through each of the track information and displaying it
+         <div class="name col-md-8"> <%= track.name %> </div>
+      <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+      </div>
+       <% end %>
+    </div>
+   
+  </div>
+</div>
+
+):
+1:    
+2:    <div class="show row">
+3:      <div class="cover col-md-4"> <img src="<%= album.cover %>"
+4:      </div>
+5:      <div class="col-sm-8">
+6:        <h3 class="album-title"> <%= album.title %> </h3>
+7:        <p class="album-artist"> <%= album.artist %> </p>
+8:          <% end %>
+9:    
+10:      
+11:        <% @tracks.each do |track| %>
+12:        <div class="track row">
+13:        # => Looping through each of the track information and displaying it
+14:             <div class="name col-md-8"> <%= track.name %> </div>
+15:          <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+16:          </div>
+17:           <% end %>
+18:        </div>
+19:       
+20:      </div>
+21:    </div>
+  
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+Started GET "/a" for ::1 at 2020-11-24 02:19:25 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/a"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-11-24 02:19:27 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1369)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.3ms | Allocations: 5571)
+
+
+Started GET "/albums/2" for ::1 at 2020-11-24 02:19:29 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1121)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 2109)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<div class="show row">
+  <div class="cover col-md-4"> <img src="<%= album.cover %>"
+  </div>
+  <div class="col-sm-8">
+    <h3 class="album-title"> <%= album.title %> </h3>
+    <p class="album-artist"> <%= album.artist %> </p>
+      <% end %>
+
+  
+    <% @tracks.each do |track| %>
+    <div class="track row">
+    # => Looping through each of the track information and displaying it
+         <div class="name col-md-8"> <%= track.name %> </div>
+      <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+      </div>
+       <% end %>
+    </div>
+   
+  </div>
+</div>
+
+):
+1:    
+2:    <div class="show row">
+3:      <div class="cover col-md-4"> <img src="<%= album.cover %>"
+4:      </div>
+5:      <div class="col-sm-8">
+6:        <h3 class="album-title"> <%= album.title %> </h3>
+7:        <p class="album-artist"> <%= album.artist %> </p>
+8:          <% end %>
+9:    
+10:      
+11:        <% @tracks.each do |track| %>
+12:        <div class="track row">
+13:        # => Looping through each of the track information and displaying it
+14:             <div class="name col-md-8"> <%= track.name %> </div>
+15:          <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+16:          </div>
+17:           <% end %>
+18:        </div>
+19:       
+20:      </div>
+21:    </div>
+  
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+Started GET "/albums/2" for ::1 at 2020-11-24 02:20:23 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  Rendered albums/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1134)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 2877)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<div class="show row">
+  <div class="cover col-md-4"> <img src="<%= album.cover %>" </div>
+
+  <div class="col-sm-8">
+    <h3 class="album-title"> <%= album.title %> </h3>
+    <p class="album-artist"> <%= album.artist %> </p>
+      <% end %>
+
+  
+    <% @tracks.each do |track| %>
+    <div class="track row">
+    # => Looping through each of the track information and displaying it
+         <div class="name col-md-8"> <%= track.name %> </div>
+      <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+      </div>
+       <% end %>
+    </div>
+   
+  </div>
+</div>
+
+):
+1:    
+2:    <div class="show row">
+3:      <div class="cover col-md-4"> <img src="<%= album.cover %>" </div>
+4:    
+5:      <div class="col-sm-8">
+6:        <h3 class="album-title"> <%= album.title %> </h3>
+7:        <p class="album-artist"> <%= album.artist %> </p>
+8:          <% end %>
+9:    
+10:      
+11:        <% @tracks.each do |track| %>
+12:        <div class="track row">
+13:        # => Looping through each of the track information and displaying it
+14:             <div class="name col-md-8"> <%= track.name %> </div>
+15:          <div class="minutes col-md-4"> <%= track.minutes %> minutes 
+16:          </div>
+17:           <% end %>
+18:        </div>
+19:       
+20:      </div>
+21:    </div>
+  
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+app/views/albums/show.html.erb:24: syntax error, unexpected end, expecting end-of-input
+Started GET "/albums/2" for ::1 at 2020-11-24 02:22:05 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  Rendered albums/show.html.erb within layouts/application (Duration: 261.8ms | Allocations: 170481)
+Completed 500 Internal Server Error in 311ms (ActiveRecord: 3.1ms | Allocations: 181244)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `album' for #<#<Class:0x00007f9b37416a48>:0x00007f9b374150d0>
+Did you mean?  @album):
+    1: 
+    2: <div class="show row">
+    3:   <div class="cover col-md-4"> <img src="<%= album.cover %>" </div>
+    4: 
+    5:   <div class="col-sm-8">
+    6:     <h3 class="album-title"> <%= album.title %> </h3>
+  
+app/views/albums/show.html.erb:3
+Started GET "/albums/2" for ::1 at 2020-11-24 02:22:06 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  [1m[36mCACHE Track Load (0.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ? LIMIT ?[0m  [["album_id", 2], ["LIMIT", 11]]
+  Rendered albums/show.html.erb within layouts/application (Duration: 251.4ms | Allocations: 164637)
+Completed 500 Internal Server Error in 253ms (ActiveRecord: 0.4ms | Allocations: 165685)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `album' for #<#<Class:0x00007f9b37416a48>:0x00007f9b3aab07e8>
+Did you mean?  @album):
+    1: 
+    2: <div class="show row">
+    3:   <div class="cover col-md-4"> <img src="<%= album.cover %>" </div>
+    4: 
+    5:   <div class="col-sm-8">
+    6:     <h3 class="album-title"> <%= album.title %> </h3>
+  
+app/views/albums/show.html.erb:3
+Started GET "/albums/2" for ::1 at 2020-11-24 02:22:29 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 2]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1439)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.3ms | Allocations: 6806)
+
+
+Started GET "/" for ::1 at 2020-11-24 02:22:44 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1354)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 3318)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:22:45 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 991)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.3ms | Allocations: 3383)
+
+
+Started GET "/" for ::1 at 2020-11-24 02:24:06 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 6090)
+Completed 200 OK in 53ms (Views: 37.8ms | ActiveRecord: 2.5ms | Allocations: 13431)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:24:14 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 6690)
+Completed 200 OK in 20ms (Views: 9.8ms | ActiveRecord: 1.5ms | Allocations: 11892)
+
+
+Started GET "/" for ::1 at 2020-11-24 02:25:56 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 15.6ms | Allocations: 5979)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 0.6ms | Allocations: 23703)
+
+
+  
+ActionView::Template::Error (The asset "application.js" is not present in the asset pipeline.
+):
+    3:   <head>
+    4:     <title>BassMusic</title>
+    5:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:      <link rel="stylesheet" href="http://content.codecademy.com/projects/bootstrap.min.css">
+    8:     <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700,500' rel='stylesheet' type='text/css'>
+    9:     <%= csrf_meta_tags %>
+  
+app/views/layouts/application.html.erb:6
+Started GET "/" for ::1 at 2020-11-24 02:26:06 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1046)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms | Allocations: 9225)
+
+
+  
+ActionView::Template::Error (The asset "application.js" is not present in the asset pipeline.
+):
+    3:   <head>
+    4:     <title>BassMusic</title>
+    5:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:      <link rel="stylesheet" href="http://content.codecademy.com/projects/bootstrap.min.css">
+    7:     <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700,500' rel='stylesheet' type='text/css'>
+    8:     <%= csrf_meta_tags %>
+    9:   </head>
+  
+app/views/layouts/application.html.erb:6
+Started GET "/" for ::1 at 2020-11-24 02:26:07 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1253)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.1ms | Allocations: 4179)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:26:10 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 6717)
+Completed 200 OK in 24ms (Views: 9.7ms | ActiveRecord: 0.7ms | Allocations: 12105)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:26:13 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 991)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 3506)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:26:14 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 991)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 3507)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:26:31 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 991)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.3ms | Allocations: 8983)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:26:32 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 991)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 3483)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:26:33 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 991)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms | Allocations: 3481)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:27:00 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1009)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 3631)
+
+
+Started GET "/a" for ::1 at 2020-11-24 02:27:05 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/a"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-11-24 02:27:07 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1018)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 2968)
+
+
+Started GET "/" for ::1 at 2020-11-24 02:27:16 -0500
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ app/views/albums/index.html.erb:4
+  Rendered albums/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1032)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 2979)
+
+
+Started GET "/albums/1" for ::1 at 2020-11-24 02:27:38 -0500
+Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:10:in `show'
+  Rendering albums/show.html.erb within layouts/application
+  [1m[36mTrack Load (0.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = ?[0m  [["album_id", 1]]
+  ↳ app/views/albums/show.html.erb:10
+  Rendered albums/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 991)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 3507)
+
+
